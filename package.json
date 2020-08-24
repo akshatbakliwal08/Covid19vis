@@ -6,8 +6,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akshatbakliwal08/Covid19vis.git"
+  },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akshatbakliwal08/Covid19vis/issues"
+  },
+  "homepage": "https://github.com/akshatbakliwal08/Covid19vis#readme",
   "dependencies": {
     "express": "^4.17.1",
     "hbs": "^4.1.1",
