@@ -73,8 +73,7 @@ button {
 }
 
   
-}
+
 button:hover {
     background-image: radial-gradient( #330867 0%,#30cfd0 100%);
-}
 }
