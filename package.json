@@ -17,8 +17,14 @@
   },
   "homepage": "https://github.com/akshatbakliwal08/Covid19vis#readme",
   "dependencies": {
+    "@sendgrid/mail": "^7.2.6",
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
     "hbs": "^4.1.1",
-    "request": "^2.88.2"
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.6.2",
+    "mongoose": "^5.10.4",
+    "request": "^2.88.2",
+    "validator": "^13.1.1"
   }
 }

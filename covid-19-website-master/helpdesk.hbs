@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Desk</title>
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+    <div class="container">
+    <form get="" method="" id='signup'>
+        <h2>Help Desk</h2>
+        <div>
+            <label for="text">Symptoms</label>
+            <input type="textarea" id="symp" name="symp">
+        </div>
+        <br/>
+        <div>
+            <button type="submit" value="submit">Submit</button>
+        </div>
+        {{!-- {{>footers}} --}}
+    </form>
+    </div>
+</body>
+</html>
+<script>
+    document.getElementById('signup').addEventListener('submit',(e)=>{
+        e.preventDefault();
+        window.location.href="/home";
+        alert("Form Submitted");
+    });
+</script>

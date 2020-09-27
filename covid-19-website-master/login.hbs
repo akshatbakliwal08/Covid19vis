@@ -2,13 +2,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Sign Up</title>
     <link rel="stylesheet" href="login.css" />
   </head>
   <body>
     
     <div class="container">
-      <form get="" method="" id="signup">
+      <form method="POST" action="/signup" post="/signup" id="signup">
         <h2>Sign Up</h2>
         <div>
             <label for="name">Name</label>
@@ -48,6 +48,13 @@
         <div></div>
         <div></div>
         <div></div>
+      {{>footers}}
       </div>
   </body>
 </html>
+{{!-- <script>
+  document.getElementById('signup').addEventListener('submit',(e)=>{
+    e.preventDefault();
+    window.location.href='/login';
+  });
+</script> --}}
