@@ -6,7 +6,7 @@ const userRouter=require('../router/user');
 const app=express();
 const hbs=require('hbs');
 const path=require('path');
-const port=process.env.PORT||3000;
+const port=process.env.PORT;
 const viewsPath=path.join(__dirname,'../covid-19-website-master');
 app.set('view engine','hbs');
 app.set('views',viewsPath);
