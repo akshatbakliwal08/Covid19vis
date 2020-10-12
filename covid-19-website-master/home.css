@@ -123,6 +123,12 @@ border: 3px solid #221375;
   color:white;
 
 }
+.contact a:visited{
+  color: white;
+}
+.contact a:hover{
+  color:rgb(136, 243, 126);
+} 
 .info a
 {
   text-decoration: none;
