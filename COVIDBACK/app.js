@@ -3,6 +3,7 @@ const express=require('express');
 // const User=require('../models/user');
 // const { update } = require('../models/user');
 // const userRouter=require('../router/user');
+const ObjectID = require('mongodb').ObjectId;
 const bodyParser=require('body-parser');
 const app=express();
 const hbs=require('hbs');
@@ -23,7 +24,7 @@ hbs.registerPartials(partialpath);
 // const { sendWelcomeEmail }=require('../email/account');
 const mongoose=require('mongoose');
 
-
+var tokenlas;
 // const mongoose=require('mongoose');
 const validator=require('validator');
 const bcrypt=require('bcryptjs');
@@ -32,9 +33,10 @@ const jwt=require('jsonwebtoken');
 const auth=async(req,res,next)=>{
     try{
         // const token=req.header('Authorization').replace('Bearer ','');
-        const token=req.user.tokens[3].token;
-        console.log(token);
+        const token=tokenlas;
+        // console.log(token);
         const decoded=jwt.verify(token,process.env.JWT_SECRET);
+        // console.log(decoded);
         const user=await User.findOne({_id:decoded._id,'tokens.token':token});
         if(!user)
             throw new Error();
@@ -91,18 +93,23 @@ app.get('/help',(req,res)=>{
         name:'Bakli'
     });
 });
-app.patch('/help',auth,async(req,res)=>{
-    const updates=Object.keys(req.body);
-    const allowUpdates=['symptom'];
-    const isValidOp=updates.every((update)=>allowUpdates.includes(update));
-    if(!isValidOp){
-        return res.status(400).send({error:'Invalid update!!'});
-    }
+app.post('/help',auth,async(req,res)=>{
+    const update=req.body.symptom;
+    // console.log(update);
     try{
-        updates.forEach((update)=>req.user[update]=req.body[update]);
-        await req.user.save();
+        // const user=await User.findById(req.user._id);
+        // console.log(user);
+        // user.symptom=update;
+        // update.forEach((update)=>req.user[update]=req.body[update]);
+        // await user.save();
+        // await req.user.save();
+        const user=await User.findByIdAndUpdate(req.user._id,{symptom:update});     
+        await user.save();
+        // console.log(user);
         res.render('home');
-    } catch(e){
+    } 
+    catch(e){
+        console.log(e);
         res.status(400).send(e);
     }
 });
@@ -137,12 +144,13 @@ app.get('/login',(req,res)=>{
         name:'bakli'
     });
 });
+
 app.post('/login',async(req,res)=>{
     try{
         const email=req.body.email;
         password=req.body.password;
         const user=await User.findByCredentials(email,password);
-        await user.generateAuthToken();
+        tokenlas= await user.generateAuthToken();
         user.save();
         res.render('home');
     } catch(e){
